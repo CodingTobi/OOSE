@@ -1,1 +1,1 @@
-Konstruktoren schreiben, Javaeigene Klassen benutzen.
+Einfache Funktionen mit Konstruktoren. Umgang mit den Standard Java Funktionen Date und Time.
