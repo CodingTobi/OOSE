@@ -1,3 +1,5 @@
+package Uebungsblatt2;
+
 class Date {
 	private int day;
 	private int month;
@@ -10,7 +12,7 @@ class Date {
 	}
 
 	public String toString() {
-		return day + "." month + "." year;
+		return day + "." + month + "." + year;
 	}
 
 	public static void main(String[] args) {
