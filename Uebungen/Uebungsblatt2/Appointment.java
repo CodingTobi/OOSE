@@ -1,13 +1,12 @@
 package Uebungsblatt2;
 
 public class Appointment {
-	private DateTime dt;
+	DateTime dt;
 	int length;
 	String reason;
 	String place;
 	
-	public Appointment(DateTime dt, int length, String reason, String place) {
-		super();
+	Appointment(DateTime dt, int length, String reason, String place) {
 		this.dt = dt;
 		this.length = length;
 		this.reason = reason;
@@ -15,7 +14,7 @@ public class Appointment {
 	}
 
 	public String toString() {
-		return "Ihr Termin:\nDatum: "+dt+"\nDauer: "+length+" Minuten\nTyp:   " + reason + "\nOrt:   "+place;
+		return "Ihr Termin:\nDatum: "+dt.toString()+"\nDauer: "+length+" Minuten\nTyp:   " + reason + "\nOrt:   "+place;
 	}
 	public static void main(String[] args) {
 		Date d = new Date(29, 11, 2018);

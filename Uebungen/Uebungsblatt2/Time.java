@@ -1,11 +1,11 @@
 package Uebungsblatt2;
 
 class Time {
-	private int hour;
-	private int minute;
-	private int second;
+	int hour;
+	int minute;
+	int second;
 
-	public Time(int hour, int minute, int second) {
+	Time(int hour, int minute, int second) {
 		this.hour = hour;
 		this.minute = minute;
 		this.second = second;

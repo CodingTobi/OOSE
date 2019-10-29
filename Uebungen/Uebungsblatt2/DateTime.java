@@ -1,10 +1,10 @@
 package Uebungsblatt2;
 
 class DateTime {
-	private Date d;
-	private Time t;
+	Date d;
+	Time t;
 
-	public DateTime(Date d, Time t) {
+	DateTime(Date d, Time t) {
 		this.d = d;
 		this.t = t;
 	}
