@@ -15,7 +15,7 @@ public class Appointment {
 	}
 
 	public String toString() {
-		return "Ihr Termin:\n Datum: "+dt+"\nDauer: "+length+"\nOrt:   "+place;
+		return "Ihr Termin:\nDatum: "+dt+"\nDauer: "+length+" Minuten\nTyp:   " + reason + "\nOrt:   "+place;
 	}
 	public static void main(String[] args) {
 		Date d = new Date(29, 11, 2018);
