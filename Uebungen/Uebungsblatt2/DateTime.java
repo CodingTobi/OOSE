@@ -1,16 +1,16 @@
 package Uebungsblatt2;
 
 class DateTime {
-	Date d;
-	Time t;
+	Date date;
+	Time time;
 
 	DateTime(Date d, Time t) {
-		this.d = d;
-		this.t = t;
+		this.date = d;
+		this.time = t;
 	}
 
 	public String toString() {
-		return d.toString() + " " + t.toString();
+		return date.toString() + " " + time.toString();
 	}
 
 	public static void main(String[] args) {
