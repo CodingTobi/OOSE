@@ -11,24 +11,50 @@ class Date {
 		this.year = year;
 	}
 	public boolean isEarlierThan(Date that) {
-		return (that.year <= this.year && that.month <= this.month && that.day < this.day);
+		//return (that.year <= this.year && that.month <= this.month && that.day < this.day);^
+		
+		if (this.year < that.year) {
+			return true;
+		} else if (this.year == that.year) {
+			if (this.month < that.month) {
+				return true;
+			} else if (this.month == that.month) {
+				if (this.day < that.day) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public boolean isLaterThan(Date that) {
-		return (that.year >= this.year && that.month >= this.month && that.day > this.day);
+		// return (that.year >= this.year && that.month >= this.month && that.day > this.day);
+		
+		if (this.year > that.year) {
+			return true;
+		} else if (this.year == that.year) {
+			if (this.month > that.month) {
+				return true;
+			} else if (this.month == that.month) {
+				if (this.day > that.day) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public boolean isSameDate(Date that) {
 		return (that.year == this.year && that.month == this.month && that.day == this.day);
 	}
 	
-	public boolean isLeapYear(Date that) {
-		if (that.year % 4 == 0 && that.year % 100 != 0 ) {
+	public boolean isLeapYear() {
+		if (year % 4 == 0 && year % 100 != 0 ) {
 			return true;
-		} else if (that.year % 100 == 0 && that.year % 400 != 0 ) {
+		} else if (year % 100 == 0 && year % 400 != 0 ) {
 			return false;
 		}
-		else if (that.year % 400 == 0) {
+		else if (year % 400 == 0) {
 			return true;
 		} else {
 			return false;
@@ -36,7 +62,7 @@ class Date {
 	}
 	
 	public int getAbsoluteDaysInYear() {
-		return (isLeapYear(this)) ? 366 : 365;
+		return (isLeapYear()) ? 366 : 365;
 	}
 
 	public String toString() {
@@ -44,17 +70,7 @@ class Date {
 	}
 
 	public static void main(String[] args) {
-		Date d1 = new Date(30, 11, 2018);
-		Date d2 = new Date(29,11,2018);
-		System.out.println(d1.toString());
-		
-		
-		System.out.println("false  " + d1.isEarlierThan(d2));
-		System.out.println("true  " + d2.isEarlierThan(d1));
-		
-		System.out.println("true  " + d1.isLaterThan(d2));
-		System.out.println("false  " + d1.isLaterThan(d2));
-		
-		System.out.println("false   "+d1.isSameDate(d2));
+		Date d1 = new Date(30, 11, 2016);
+		Date d2 = new Date(30,11,2018);
 	}
 }
