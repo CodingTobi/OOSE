@@ -1,4 +1,4 @@
-package Uebungsblatt2;
+package Uebungsblatt3;
 
 public class Appointment {
 	DateTime time;
