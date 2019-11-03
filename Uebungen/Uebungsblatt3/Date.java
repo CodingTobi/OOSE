@@ -10,9 +10,8 @@ class Date {
 		this.month = month;
 		this.year = year;
 	}
+
 	public boolean isEarlierThan(Date that) {
-		//return (that.year <= this.year && that.month <= this.month && that.day < this.day);^
-		
 		if (this.year < that.year) {
 			return true;
 		} else if (this.year == that.year) {
@@ -26,10 +25,8 @@ class Date {
 		}
 		return false;
 	}
-	
+
 	public boolean isLaterThan(Date that) {
-		// return (that.year >= this.year && that.month >= this.month && that.day > this.day);
-		
 		if (this.year > that.year) {
 			return true;
 		} else if (this.year == that.year) {
@@ -43,24 +40,22 @@ class Date {
 		}
 		return false;
 	}
-	
+
 	public boolean isSameDate(Date that) {
-		return (that.year == this.year && that.month == this.month && that.day == this.day);
+		return (that.year == this.year && that.month == this.month
+				&& that.day == this.day);
 	}
-	
+
 	public boolean isLeapYear() {
-		if (year % 4 == 0 && year % 100 != 0 ) {
+		if (year % 4 == 0 && year % 100 != 0) {
 			return true;
-		} else if (year % 100 == 0 && year % 400 != 0 ) {
+		} else if (year % 400 != 0) {
 			return false;
-		}
-		else if (year % 400 == 0) {
-			return true;
 		} else {
-			return false;
+			return true;
 		}
 	}
-	
+
 	public int getAbsoluteDaysInYear() {
 		return (isLeapYear()) ? 366 : 365;
 	}
@@ -71,6 +66,6 @@ class Date {
 
 	public static void main(String[] args) {
 		Date d1 = new Date(30, 11, 2016);
-		Date d2 = new Date(30,11,2018);
+		Date d2 = new Date(30, 11, 2018);
 	}
 }
