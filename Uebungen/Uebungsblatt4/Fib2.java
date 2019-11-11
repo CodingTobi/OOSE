@@ -1,8 +1,15 @@
-class Fib{
-  static int fib(int n) {
-    if (n >= 2) {
-      fib(n-2) + fib(n-1);
-    }
-    return (n==1) ? 1 : 0;
-  }
+package Uebungsblatt4;
+
+class Fib2 {
+	static int fib(int n) {
+		return (int) (1 / Math.sqrt(5) * (Math.pow((1 + Math.sqrt(5) / 2), n) - Math.pow((1 - Math.sqrt(5) / 2), n)));
+		//return (int) ((Math.pow(((1 + Math.sqrt(5)) / 2), n) - Math.pow(((1 - Math.sqrt(5)) / 2), n)) / Math.sqrt(5));
+	}
+	
+	public static void main (String[] args) {
+		System.out.println(Fib2.fib(50));
+		
+	}
 }
+
+
