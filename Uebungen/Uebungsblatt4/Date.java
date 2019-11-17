@@ -21,6 +21,10 @@ class Date {
 		return (temp == 7) ? 0 : temp;
 	}
 
+	int dayOfWeekNormal() {
+		return (dayOfWeek() == 0) ? 7 : dayOfWeek();
+	}
+
 	int countMonth() {
 		if (this.month == 1 || this.month == 3 || this.month == 5
 				|| this.month == 7 || this.month == 8 || this.month == 10
@@ -51,18 +55,53 @@ class Date {
 		}
 	}
 
-//	String monthAsHTML(){
-//		  <table>
-//		  <tr><th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sb</th><th>So</th></tr>
-//		  <tr><td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td></tr>
-//		  <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
-//		  <tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr>
-//		  <tr><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
-//		  <tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
-//		</table>
-//	  }
+	String monthAsHTML() {
+		// v gibt wochentag aus, startet mit Montag == 1
+		int dayOfWeekNormal = (dayOfWeek() == 0) ? 7 : dayOfWeek();
+
+		String tempMhtml = "<table><tr><th>Mo</th><th>Di</th><th>Mi</th>"
+				+ "<th>Do</th><th>Fr</th><th>Sb</th><th>So</th></tr><tr>";
+
+		for (int i = 1; i <= dayOfWeekNormal; i++) {	// leere Tabellenfelder
+														// vor
+			tempMhtml += "<th></th>"; 					// erstem
+		} 												// wochentag im monat
+
+		// v füllt die einzelnen Tabellenfelder mit Zahlen bis anzahl Tage im
+		// v Monat
+		for (int i = 1; i <= countMonth(); i++) {
+			tempMhtml += "<th>" + i + "</th>";
+			// v wenn eine Zeile voll ist (7 einträge) neue Zeile machen
+			System.out.println(
+					"dayOfWeekNormal " + dayOfWeekNormal + " | (i - 1) -> "
+							+ (i - 1) + " | dayOfWeekNormal + (i - 1) % 7 -> "
+							+ (dayOfWeekNormal + (i - 1) % 7) + " | "
+							+ (dayOfWeekNormal + (i - 1)) + " % 7");
+			if ((dayOfWeekNormal + (i - 1)) % 7 == 0) {
+				tempMhtml += "</tr><tr>";
+			}
+		}
+		// v restliche felder mit leeren tabellenfelden belegen
+		for (int i = 0; i <= dayOfWeek(); i++) {
+			tempMhtml += "<th></th>";
+		}
+
+		return (tempMhtml + "</tr></table>"); // tabelle noch schließen
+	}
 
 	Date mothersDay() {
+		Date tempMothersDay = this;
+		tempMothersDay.month = 5;
+		boolean firstSo = true; // für ersten Sonntag im Monat
+		for (tempMothersDay.day = 1; tempMothersDay.day < countMonth(); tempMothersDay.day++) {
+			if (tempMothersDay.dayOfWeek() == 0) {
+				if (!firstSo) {
+					return tempMothersDay;
+				} else {
+					firstSo = false;
+				}
+			}
+		}
 		return null;
 	}
 
@@ -133,9 +172,15 @@ class Date {
 		System.out.println(d6.dayOfWeek());
 		Date d7 = new Date(24, 11, 2019);
 		System.out.println(d7.dayOfWeek());
-		
-		Date d10 = new Date(31,10,2019);
-		System.out.println("Count month "+d10.countMonth() + " day " + d10.day);
+
+		Date d10 = new Date(31, 11, 2019);
+		System.out
+				.println("Count month " + d10.countMonth() + " day " + d10.day);
 		System.out.println(d10.nextDay().toString());
+
+		System.out.println(d10.monthAsHTML());
+		
+		System.out.println();
+		System.out.println(d10.mothersDay().toString());
 	}
 }
