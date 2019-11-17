@@ -11,7 +11,7 @@ class Date {
 		this.year = year;
 	}
 
-	int dayOfWeek() {
+	int dayOfWeek2() {
 		if (month < 3) {
 			year--;
 		}
@@ -23,6 +23,34 @@ class Date {
 
 	int dayOfWeekNormal() {
 		return (dayOfWeek() == 0) ? 7 : dayOfWeek();
+	}
+
+	int dayOfWeek() {
+
+		int m = month;
+		if (m < 3) {
+			m += 10;
+		} else {
+			m -= 2;
+		}
+
+		int y = year % 100;
+		if (month < 3) {
+			if (y == 0) {
+				y = 99;
+			} else {
+				y -= 1;
+			}
+		}
+		int c = year / 100;
+		if (month < 3 && year % 100 == 0) {
+			c -= 1;
+		}
+		int result = (int) ((day + Math.floor(2.6 * m - 0.2) + y)
+				+ (Math.floor(y / 4) + Math.floor(c / 4) - 2 * c));
+		result %= 7;
+		return (result >= 0) ? (int) result : (int) result + 7;
+
 	}
 
 	int countMonth() {
@@ -57,12 +85,15 @@ class Date {
 
 	String monthAsHTML() {
 		// v gibt wochentag aus, startet mit Montag == 1
-		int dayOfWeekNormal = (dayOfWeek() == 0) ? 7 : dayOfWeek();
+		Date anfangMonat = this;
+		anfangMonat.day = 1;
+		int dayOfWeekNormal = (anfangMonat.dayOfWeek() == 0) ? 7 : anfangMonat.dayOfWeek();
+		System.out.println(" dayOfWeekNormal: "+dayOfWeekNormal + " dayOfWeek(): "+ anfangMonat.dayOfWeek());
 
 		String tempMhtml = "<table><tr><th>Mo</th><th>Di</th><th>Mi</th>"
 				+ "<th>Do</th><th>Fr</th><th>Sb</th><th>So</th></tr><tr>";
 
-		for (int i = 1; i <= dayOfWeekNormal; i++) {	// leere Tabellenfelder
+		for (int i = 1; i < dayOfWeekNormal; i++) {	// leere Tabellenfelder
 														// vor
 			tempMhtml += "<th></th>"; 					// erstem
 		} 												// wochentag im monat
@@ -72,13 +103,10 @@ class Date {
 		for (int i = 1; i <= countMonth(); i++) {
 			tempMhtml += "<th>" + i + "</th>";
 			// v wenn eine Zeile voll ist (7 einträge) neue Zeile machen
-			System.out.println(
-					"dayOfWeekNormal " + dayOfWeekNormal + " | (i - 1) -> "
-							+ (i - 1) + " | dayOfWeekNormal + (i - 1) % 7 -> "
-							+ (dayOfWeekNormal + (i - 1) % 7) + " | "
-							+ (dayOfWeekNormal + (i - 1)) + " % 7");
+			
 			if ((dayOfWeekNormal + (i - 1)) % 7 == 0) {
 				tempMhtml += "</tr><tr>";
+				System.out.println(tempMhtml);
 			}
 		}
 		// v restliche felder mit leeren tabellenfelden belegen
@@ -173,13 +201,14 @@ class Date {
 		Date d7 = new Date(24, 11, 2019);
 		System.out.println(d7.dayOfWeek());
 
-		Date d10 = new Date(31, 11, 2019);
+		Date d10 = new Date(20, 11, 2013);
 		System.out
 				.println("Count month " + d10.countMonth() + " day " + d10.day);
 		System.out.println(d10.nextDay().toString());
 
-		System.out.println(d10.monthAsHTML());
-		
+		Date d11 = new Date(12,02,2016);
+		System.out.println(d11.monthAsHTML());
+
 		System.out.println();
 		System.out.println(d10.mothersDay().toString());
 	}
