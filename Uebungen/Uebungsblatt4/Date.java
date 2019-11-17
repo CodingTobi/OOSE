@@ -89,7 +89,7 @@ class Date {
 		for (int i = 1; i <= countMonth(); i++) {
 			tempMhtml += "<td>" + i + "</td>";
 			// v wenn eine Zeile voll ist (7 einträge) neue Zeile machen
-			if ((dayOfWeekNormal + (i - 1)) % 7 == 0) {
+			if ((dayOfWeekNormal + (i - 1)) % 7 == 0 && i < countMonth()) {
 				tempMhtml += "</tr><tr>";
 			}
 		}
