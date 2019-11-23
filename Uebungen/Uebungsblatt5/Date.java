@@ -97,7 +97,8 @@ class Date {
 		Date tempMothersDay = this;
 		tempMothersDay.month = 5;
 		boolean firstSo = true; // für ersten Sonntag im Monat
-		for (tempMothersDay.day = 1; tempMothersDay.day < countMonth(); tempMothersDay.day++) {
+		for (tempMothersDay.day = 1; tempMothersDay.day < countMonth();
+				tempMothersDay.day++) {
 			if (tempMothersDay.dayOfWeek() == 0) {
 				if (!firstSo) {
 					return tempMothersDay;
