@@ -31,7 +31,7 @@ public class GeometricObject {
 	}
 
 	boolean isLeftOf(GeometricObject that) {
-		return (this.corner.x - this.width) < that.corner.x;
+		return (this.corner.x + this.width) < that.corner.x;
 	}
 
 	boolean isRightOf(GeometricObject that) {
@@ -42,10 +42,4 @@ public class GeometricObject {
 		return (!isRightOf(that) && !isLeftOf(that)
 				|| !isAbove(that) && !isUnderneath(that));
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
