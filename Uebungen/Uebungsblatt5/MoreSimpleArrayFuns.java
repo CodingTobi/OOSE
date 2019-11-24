@@ -14,11 +14,17 @@ public class MoreSimpleArrayFuns {
 	}
 
 	static boolean startsWith(int[] prefix, int[] xs) {
-		for (int i = 0; i < prefix.length; i++) {
-			if (xs[i] != prefix[i])
-				return false;
+		if (prefix == xs) {
+			return true;
+		} else if (xs.length > 0) {
+
+			for (int i = 0; i < prefix.length; i++) {
+				if (xs[i] != prefix[i])
+					return false;
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	static void replace(int[] xs, int oldI, int newI) {
@@ -36,11 +42,16 @@ public class MoreSimpleArrayFuns {
 	}
 
 	static int[] getSubArray(int[] xs, int startIndex, int length) {
-		int[] temp = new int[length];
-		for (int i = startIndex; i < startIndex + length; i++) {
-			temp[i - startIndex] = xs[i];
+		if (xs.length > 0 && startIndex < xs.length
+				&& xs.length > startIndex + length) {
+			int[] temp = new int[length];
+			for (int i = startIndex; i < startIndex + length; i++) {
+				temp[i - startIndex] = xs[i];
+			}
+			return temp;
 		}
-		return temp;
+		int[] test = {1,1,1,1,1,1,1,1,1,1}; ///////////////////////////////////////ÄNDERN
+		return test;
 	}
 }
 
