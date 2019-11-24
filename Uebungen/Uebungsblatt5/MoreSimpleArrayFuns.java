@@ -1,5 +1,7 @@
 package Uebungsblatt5;
 
+import java.lang.AssertionError;
+
 public class MoreSimpleArrayFuns {
 
 	private MoreSimpleArrayFuns() {
@@ -14,17 +16,11 @@ public class MoreSimpleArrayFuns {
 	}
 
 	static boolean startsWith(int[] prefix, int[] xs) {
-		if (prefix == xs) {
-			return true;
-		} else if (xs.length > 0) {
-
-			for (int i = 0; i < prefix.length; i++) {
-				if (xs[i] != prefix[i])
-					return false;
-			}
-			return true;
+		for (int i = 0; i < prefix.length; i++) {
+			if (xs.length == 0 || xs[i] != prefix[i])
+				return false;
 		}
-		return false;
+		return true;
 	}
 
 	static void replace(int[] xs, int oldI, int newI) {
@@ -50,8 +46,21 @@ public class MoreSimpleArrayFuns {
 			}
 			return temp;
 		}
-		int[] test = {1,1,1,1,1,1,1,1,1,1}; ///////////////////////////////////////ÄNDERN
+		int[] test = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 		return test;
+	}
+
+	public static void main(String[] args) {
+		int[] testA = {};
+		int[] testB = {};
+		int[] testC = new int[0];
+		int[] testD = null;
+		// System.out.println(firstIndex(testA, 9));
+		System.out.println(startsWith(testA, testB));
+		System.out.println(startsWith(testC, testD));
+		// replace(testA, 2, 45);
+		// reverse(testA);
+		// printArr(getSubArray(testA, 4, 7));
 	}
 }
 
@@ -61,12 +70,3 @@ public class MoreSimpleArrayFuns {
 //	System.out.println();
 //}
 //
-//public static void main(String[] args) {
-//	int[] testA = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-//	int[] testB = { 1, 2, 3 };
-//	//System.out.println(firstIndex(testA, 9));
-//	//System.out.println(startsWith(testB, testA));
-//	//replace(testA, 2, 45);
-//	//reverse(testA);
-//	printArr(getSubArray(testA, 4, 7));
-//}
