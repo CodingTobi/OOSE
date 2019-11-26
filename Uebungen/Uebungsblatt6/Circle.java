@@ -2,31 +2,28 @@ package Uebungsblatt6;
 
 class Circle extends Ellipse {
 
-	public Circle() {
+	Circle() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Circle(Vertex corner, double width, double height, Vertex velocity) {
-		super(corner, width, height, velocity);
+	Circle(Vertex corner, double diameter, Vertex velocity) {
+		super(corner, diameter, diameter, velocity);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Circle(Vertex corner, double width, double height) {
-		super(corner, width, height);
-		// TODO Auto-generated constructor stub
+	Circle(Vertex corner, double diameter) {
+		super(corner, diameter, diameter);
 	}
 
-	public Circle(Vertex corner) {
+	Circle(Vertex corner) {
 		super(corner);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "Circle [corner=" + corner + ", width=" + width + ", height=" + height + ", velocity=" + velocity + "]";
+		return "Circle(" + corner + "," + width + "," + height + "," + velocity
+				+ ")";
 	}
-	  
-
-
-	}
+}
