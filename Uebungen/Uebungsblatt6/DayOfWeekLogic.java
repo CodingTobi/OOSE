@@ -9,13 +9,14 @@ class DayOfWeekLogic extends ButtonLogic {
 
 	@Override
 	String getButtonLabel() {
-		
-		return "";
+		return "Get day of week";
 	}
 
 	@Override
 	String eval(String x) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] temp = x.split(".");
+		System.out.println(Integer.valueOf(temp[0]));
+		return "" + new Date(Integer.valueOf(temp[0]),
+				Integer.valueOf(temp[1]), Integer.valueOf(temp[2])).dayOfWeek();
 	}
 }
